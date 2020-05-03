@@ -9,58 +9,35 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$voiceNum.wav');
   }
 
+  Expanded buildKey({int voiceNum, Color color}) {
+    return Expanded(
+      child: FlatButton(
+        onPressed: () {
+          playVoice(voiceNum);
+        },
+        color: color,
+        child: null,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Container(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                FlatButton(
-                  onPressed: () {
-                    playVoice(1);
-                  },
-                  color: Colors.red,
-                  child: null,
-                ),
-                FlatButton(
-                  onPressed: () {
-                    playVoice(2);
-                  },
-                  color: Colors.blue,
-                  child: null,
-                ),
-                FlatButton(
-                    onPressed: () {
-                      playVoice(3);
-                    },
-                    color: Colors.teal,
-                    child: null),
-                FlatButton(
-                    onPressed: () {
-                      playVoice(4);
-                    },
-                    color: Colors.blueGrey,
-                    child: null),
-                FlatButton(
-                    onPressed: () {
-                      playVoice(5);
-                    },
-                    color: Colors.amberAccent,
-                    child: null),
-                FlatButton(
-                    onPressed: () {
-                      playVoice(6);
-                    },
-                    color: Colors.greenAccent,
-                    child: null),
-                FlatButton(
-                    onPressed: () {
-                      playVoice(7);
-                    },
-                    color: Colors.deepPurpleAccent,
-                    child: null),
+              buildKey(voiceNum: 1, color: Colors.red),
+              buildKey(voiceNum: 2, color: Colors.blue),
+              buildKey(voiceNum: 3, color: Colors.teal),
+              buildKey(voiceNum: 4, color: Colors.blueGrey),
+              buildKey(voiceNum: 5, color: Colors.amberAccent),
+              buildKey(voiceNum: 6, color: Colors.greenAccent),
+              buildKey(voiceNum: 7, color: Colors.deepPurpleAccent),
               ],
             ),
           ),
